@@ -125,8 +125,3 @@ The panel sends validated commands to the current document. The content script r
 - Page tools focus on supported content in the main document. Embedded players, shadow content, and custom controls may have limited coverage. Rescan after the website changes and review uncertain findings manually.
 - Undo and Restore manage page adaptations. To change saved network ad blocking, save the desired ad setting and reload the website.
 
-## Remaining project work
-
-- Prepare the UML diagrams, project report, and final demo. Verify the demo flows on selected real websites.
-- **Deferred features** include Task Mode, the optional developer accessibility dashboard, and using feedback to improve future suggestions.
-- **Stretch scope** includes AI-assisted recommendations and natural-language task planning.
