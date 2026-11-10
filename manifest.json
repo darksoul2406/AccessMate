@@ -1,0 +1,46 @@
+{
+  "manifest_version": 3,
+  "name": "AccessMate",
+  "version": "0.1.0",
+  "description": "Personalized web accessibility, reversible page adaptations, reading assistance, and distraction control.",
+  "minimum_chrome_version": "116",
+  "icons": {
+    "16": "assets/icons/icon16.png",
+    "32": "assets/icons/icon32.png",
+    "48": "assets/icons/icon48.png",
+    "128": "assets/icons/icon128.png"
+  },
+  "permissions": [
+    "storage",
+    "activeTab",
+    "scripting",
+    "sidePanel",
+    "declarativeNetRequest"
+  ],
+  "optional_host_permissions": [
+    "http://*/*",
+    "https://*/*"
+  ],
+  "content_security_policy": {
+    "extension_pages": "script-src 'self' 'wasm-unsafe-eval'; object-src 'self'"
+  },
+  "background": {
+    "service_worker": "background/service-worker.js",
+    "type": "module"
+  },
+  "declarative_net_request": {
+    "rule_resources": [
+      { "id": "accessmate_ads", "enabled": false, "path": "blocking/ad-rules.json" }
+    ]
+  },
+  "action": {
+    "default_title": "Open AccessMate",
+    "default_icon": {
+      "16": "assets/icons/icon16.png",
+      "32": "assets/icons/icon32.png"
+    }
+  },
+  "side_panel": {
+    "default_path": "panel/panel.html"
+  }
+}

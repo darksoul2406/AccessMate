@@ -1,0 +1,208 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="color-scheme" content="dark">
+    <title>AccessMate — Accessibility and Assistance</title>
+    <link rel="stylesheet" href="panel.css">
+    <script type="module" src="panel.js"></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main-content">Skip to main content</a>
+
+    <header class="panel-header">
+      <div>
+        <h1>AccessMate</h1>
+        <p>Accessibility that adapts to you.</p>
+      </div>
+      <img class="panel-logo" src="../assets/icons/icon128.png" width="128" height="128" alt="">
+    </header>
+
+    <nav aria-label="Panel sections">
+      <ul class="section-links">
+        <li><a href="#report">Report</a></li>
+        <li><a href="#profiles">Profiles</a></li>
+        <li><a href="#customization">Customize</a></li>
+        <li><a href="#distractions">Distractions</a></li>
+        <li><a href="#assistance">Assistance</a></li>
+        <li><a href="#changes">Undo and restore</a></li>
+      </ul>
+    </nav>
+
+    <main id="main-content" tabindex="-1">
+      <section aria-labelledby="page-heading">
+        <h2 id="page-heading">Current page</h2>
+        <p id="current-page-title">No page connected.</p>
+        <p id="page-status" role="status" aria-atomic="true">
+          Page tools are unavailable. No changes have been applied.
+        </p>
+      </section>
+
+      <section id="report" aria-labelledby="report-heading">
+        <h2 id="report-heading">Accessibility report</h2>
+        <p id="scan-status">Scanning is unavailable until a page is connected.</p>
+        <button id="scan-page" type="button" disabled aria-describedby="scan-status">
+          Scan current page
+        </button>
+        <dl class="report-summary">
+          <dt>Assessment score</dt>
+          <dd id="assessment-score">Not assessed</dd>
+          <dt>Detected issues</dt>
+          <dd id="issue-count">Not assessed</dd>
+        </dl>
+        <p class="feature-note">Automated checks only. Manual review is still needed.</p>
+        <div id="scan-results">
+          <p>No scan results yet.</p>
+        </div>
+      </section>
+
+      <section id="profiles" aria-labelledby="profiles-heading">
+        <h2 id="profiles-heading">Profiles</h2>
+        <p>Start with a preset, or customize.</p>
+        <p>Preview before saving.</p>
+        <label for="profile-scope">Preferences to edit</label>
+        <select id="profile-scope" disabled>
+          <option value="personal">Personal preferences — all websites</option>
+          <option value="site" disabled>This website only</option>
+        </select>
+        <p id="profile-context">Personal preferences</p>
+        <p id="profiles-status" role="status" aria-atomic="true">Profile controls are unavailable.</p>
+        <button id="retry-profiles" type="button" hidden disabled>Retry loading preferences</button>
+        <fieldset id="profile-controls" disabled aria-describedby="profiles-status">
+          <legend>Profile preferences</legend>
+          <label for="profile-preset">Preset suggestions</label>
+          <select id="profile-preset" name="profilePreset">
+            <option value="" selected>Choose a preset</option>
+          </select>
+          <p id="preset-description">Choose suggestions to review before adding them to your draft.</p>
+          <ul id="preset-changes" aria-label="Suggested preference changes"></ul>
+          <div class="button-group">
+            <button id="apply-preset" type="button" disabled>Use preset suggestions</button>
+            <button id="inherit-personal" type="button" hidden>Use personal preferences</button>
+          </div>
+          <div class="setting-row">
+            <input id="auto-apply-site" name="autoApplySite" type="checkbox" disabled
+                   aria-describedby="site-access-note">
+            <label for="auto-apply-site">Automatically apply on this site</label>
+          </div>
+          <p id="site-access-note" class="feature-note">Coming soon; site access will require permission.</p>
+        </fieldset>
+      </section>
+
+      <section id="customization" aria-labelledby="customization-heading">
+        <h2 id="customization-heading">Customize</h2>
+        <p id="customization-status">Connect a website to preview changes.</p>
+        <fieldset id="customization-controls" disabled aria-describedby="customization-status">
+          <legend>Visual and sensory settings</legend>
+          <label for="text-scale">Text scale</label>
+          <select id="text-scale" name="textScale">
+            <option value="100" selected>Original size</option>
+            <option value="125">125%</option>
+            <option value="150">150%</option>
+            <option value="200">200%</option>
+          </select>
+          <div class="setting-row">
+            <input id="high-contrast" name="highContrast" type="checkbox">
+            <label for="high-contrast">Increase contrast</label>
+          </div>
+          <div class="setting-row">
+            <input id="reduce-motion" name="reduceMotion" type="checkbox" aria-describedby="reduce-motion-note">
+            <label for="reduce-motion">Reduce motion</label>
+          </div>
+          <p id="reduce-motion-note">Reduces supported animations and GIFs.</p>
+          <div class="setting-row">
+            <input id="highlight-focus" name="highlightFocus" type="checkbox">
+            <label for="highlight-focus">Highlight keyboard focus</label>
+          </div>
+          <div class="button-group">
+            <button id="save-settings" type="button" disabled>Save preferences</button>
+            <button id="cancel-preview" type="button" disabled>Discard unsaved edits</button>
+          </div>
+        </fieldset>
+        <details>
+          <summary>Review all preferences in this draft</summary>
+          <div id="preferences-summary"><p>Preferences have not loaded yet.</p></div>
+        </details>
+      </section>
+
+      <section id="distractions" aria-labelledby="distractions-heading">
+        <h2 id="distractions-heading">Ads and distractions</h2>
+        <p id="distractions-status">Ad and distraction controls are unavailable.</p>
+        <fieldset id="distraction-controls" disabled aria-describedby="distractions-status">
+          <legend>Content preferences</legend>
+          <label for="ad-behavior">Advertisements</label>
+          <select id="ad-behavior" name="adBehavior">
+            <option value="allow" selected>Allow</option>
+            <option value="minimize">Minimize</option>
+            <option value="hide">Hide</option>
+            <option value="block">Block supported requests</option>
+          </select>
+          <div class="setting-row">
+            <input id="hide-promotions" name="hidePromotions" type="checkbox">
+            <label for="hide-promotions">Hide promotional banners</label>
+          </div>
+          <div class="setting-row">
+            <input id="hide-recommendations" name="hideRecommendations" type="checkbox">
+            <label for="hide-recommendations">Hide recommended content</label>
+          </div>
+        </fieldset>
+      </section>
+
+      <section id="assistance" aria-labelledby="assistance-heading">
+        <h2 id="assistance-heading">Reading and assistance</h2>
+        <p id="assistance-status">Reading assistance is unavailable.</p>
+        <fieldset id="assistance-controls" disabled aria-describedby="assistance-status">
+          <legend>Reading tools</legend>
+          <div class="button-group">
+            <button id="read-aloud" type="button">Read aloud</button>
+            <button id="stop-reading" type="button">Stop reading</button>
+            <button id="toggle-reading-mode" type="button" aria-pressed="false">
+              Reading mode
+            </button>
+          </div>
+        </fieldset>
+        <fieldset id="image-tools" disabled aria-describedby="image-tools-status">
+          <legend>Image assistance</legend>
+          <p class="feature-note">Bring an image into view, then find it here. Image processing stays on this device.</p>
+          <button id="find-images" type="button">Find visible images</button>
+          <p id="image-tools-status" role="status" aria-atomic="true">Open a website to use image assistance.</p>
+          <div id="image-options" hidden>
+            <label for="visible-image">Image on this page</label>
+            <select id="visible-image"></select>
+            <div class="button-group">
+              <button id="image-ocr" type="button">Extract text (OCR)</button>
+              <button id="describe-image" type="button">Describe image</button>
+              <button id="cancel-image-job" type="button" hidden>Cancel image processing</button>
+            </div>
+          </div>
+          <div id="image-output" hidden>
+            <label for="image-result">Image result</label>
+            <textarea id="image-result" rows="4" readonly></textarea>
+            <div class="button-group">
+              <button id="read-image-result" type="button">Read result aloud</button>
+            </div>
+          </div>
+        </fieldset>
+      </section>
+
+      <section id="changes" aria-labelledby="changes-heading">
+        <h2 id="changes-heading">Undo and restore</h2>
+        <p id="changes-status">No AccessMate changes to undo.</p>
+        <div class="button-group">
+          <button id="undo-change" type="button" disabled aria-describedby="changes-status">
+            Undo last change
+          </button>
+          <button id="restore-page" type="button" disabled aria-describedby="changes-status">
+            Restore page
+          </button>
+        </div>
+        <p class="feature-note">Saved preferences and network ad blocking stay unchanged.</p>
+      </section>
+    </main>
+
+    <footer class="panel-footer">
+      <p>You control which changes are applied.</p>
+    </footer>
+  </body>
+</html>

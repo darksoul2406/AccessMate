@@ -1,0 +1,29 @@
+# Installed npm dependencies
+node_modules/
+
+# Generated extension build
+/dist/
+
+# Local SQLite database and its sidecar files
+/server/data/
+
+# Generated test output and browser downloads
+/coverage/
+/playwright-report/
+/test-results/
+/blob-report/
+/playwright/.cache/
+/.playwright/
+
+# Local environment variables and secrets
+.env
+.env.*
+!.env.example
+
+# Debug logs
+*.log
+
+# Operating system metadata
+.DS_Store
+Thumbs.db
+Desktop.ini
